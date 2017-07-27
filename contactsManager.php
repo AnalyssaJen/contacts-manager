@@ -1,6 +1,7 @@
 <?php
 //function that will make the machine work
 function viewContacts($filename){
+	//newcontacts can be added to this array
 	// $contacts = array();
 
 	$handle = fopen($filename, 'r');
@@ -24,11 +25,14 @@ $input = fgets(STDIN);
 
 // }
 
-// function addContact(){
-// 	if ($input ==2){
-
-// 	}
-// }
+function addContact(){
+	// if ($input ==2){
+	fwrite(STDOUT, 'Please enter name and phone number of person you would like to add');
+	$inputAddContact = fgets(STDIN);
+	$inputAddContact = 
+	array_push();
+	}
+}
 // function searchContacts(){
 // 	if ($input ==3){
 
