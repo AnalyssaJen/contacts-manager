@@ -3,20 +3,21 @@
 function viewContacts($filename){
 	//newcontacts can be added to this array
 	$contacts = array();
-
 	$handle = fopen($filename, 'r');
 	$contactString = fread($handle, filesize($filename));
 	$contactsArray = explode("\n", $contactString);
 	
-	//print_r($contactString);
+	print_r($contactsArray);
 
-	foreach ($contactArray as $contact) 
-	{	
-		$parsedContacts['name'] = $contactsArray[0];
-		$parsedContacts['number'] = $contactsArray[1];
-		array_push($contacts, $parsedContacts);
-	}
-return $contacts;
+	// foreach ($contactsArray as $contact) 
+	// {	
+	// 	$infoArray = explode("|", $contact);
+	// 	$parsedContacts =[];
+	// 	$parsedContacts['name'] = $infoArray[0];
+	// 	$parsedContacts['number'] = $infoArray[1];
+	// 	array_push($contacts, $parsedContacts);
+	// }
+//return $contacts;
 }
 
 //basic beginning template
@@ -33,7 +34,7 @@ function menu(){
 	print_r(PHP_EOL . PHP_EOL);
 	print_r("1. View Contacts" . PHP_EOL . "2. Add Contact" . PHP_EOL . "3. Search Contact By Name" . PHP_EOL . "4. Delete Contact" . PHP_EOL . "5. Exit" . PHP_EOL);
 
-	fwrite(STDOUT, 'Please enter a # to select an action');
+	fwrite(STDOUT, 'Please enter a # to select an action' . PHP_EOL);
 	$input = trim(fgets(STDIN));
 
 	if ($input == 1) {
@@ -62,30 +63,30 @@ fclose($handle);
 menu();
 
 
-function addContact($contactString){
+function addContact(){
 
 	$newContact = [];
 
-	fwrite(STDOUT, 'Please enter new name');
+	fwrite(STDOUT, 'Please enter new name' . PHP_EOL);
 	$name = trim(fgets(STDIN));
 	
 
-	fwrite(STDOUT, 'Please enter new phone number');
+	fwrite(STDOUT, 'Please enter new phone number' . PHP_EOL);
 	$number = trim(fgets(STDIN));
 
-	$newContact = [
-		$newContact['name'] = $name,
-		$newContact['number'] = $number
-	];
+	// $newContact = [
+	// 	$newContact['name'] = $name,
+	// 	$newContact['number'] = $number
+	// ];
 
 	array_push($contactString,$newContact);
 	fwrite($handle, $contactString);
 
-return $contactString;
+//return $contactString;
 }
 
 function searchContacts(){
-	fwrite(STDOUT, 'Please enter a contact name to View');
+	fwrite(STDOUT, 'Please enter a contact name to View' . PHP_EOL);
 	$searchName = trim(fgets(STDIN));
 	$nameFound = (array_search('searchName', $contractString));
  	print_r(array_search('searchName', $contactString));
