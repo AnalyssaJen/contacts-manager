@@ -1,23 +1,27 @@
 <?php
+
 //function that will make the machine work
 function viewContacts($filename){
 	//newcontacts can be added to this array
 	$contacts = array();
 	$handle = fopen($filename, 'r');
-	$contactString = fread($handle, filesize($filename));
+	$contactString = trim(fread($handle, filesize($filename)));
 	$contactsArray = explode("\n", $contactString);
 	
-	print_r($contactsArray);
+	// print_r($contactsArray);
 
-	// foreach ($contactsArray as $contact) 
-	// {	
-	// 	$infoArray = explode("|", $contact);
-	// 	$parsedContacts =[];
-	// 	$parsedContacts['name'] = $infoArray[0];
-	// 	$parsedContacts['number'] = $infoArray[1];
-	// 	array_push($contacts, $parsedContacts);
-	// }
-//return $contacts;
+	foreach ($contactsArray as $contact) 
+	{	
+		$infoArray = explode("|", $contact);
+		$parsedContacts =[];
+		$parsedContacts['name'] = $infoArray[0];
+		$parsedContacts['number'] = $infoArray[1];
+		array_push($contacts, $parsedContacts);	
+	}
+	foreach($contacts as $contact){
+		print_r($contact['name'] . '    |     ' .$contact['number'] .PHP_EOL );
+	}
+return $contacts;
 }
 
 //basic beginning template
