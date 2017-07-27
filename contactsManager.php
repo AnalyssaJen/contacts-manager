@@ -26,18 +26,29 @@ $input = fgets(STDIN);
 // }
 
 function addContact(){
-	// if ($input ==2){
-	fwrite(STDOUT, 'Please enter name and phone number of person you would like to add');
-	$inputAddContact = fgets(STDIN);
-	$inputAddContact = 
-	array_push();
+	if ($input ==2){
+
+	$newContact = [];
+
+	fwrite(STDOUT, 'Please enter name');
+	$name = trim(fgets(STDIN));
+
+	fwrite(STDOUT, 'Please enter phone number');
+	$number = trim(fgets(STDIN));
+
+	$newContact['name'] = $name;
+	$newContact['number'] = $number;
+
+	array_push($contactString,$newContact);
 	}
 }
 // function searchContacts(){
 // 	if ($input ==3){
-
-// 	}
-// }
+	fwrite(STDOUT, 'Please enter a contact name to View');
+	$searchName = trim(fgets(STDIN));
+ 	print_r(array_search('searchName', $contactString));
+	}
+}
 // function deleteContact(){
 // 	if ($input ==4){
 
