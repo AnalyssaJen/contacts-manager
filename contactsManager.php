@@ -100,15 +100,31 @@ function searchContacts(){
 }
 
 
+function deleteContact(){
+	
+	//foreach -- do we need a foreach to remove the specific index by name from the array? 
+	
+	fwrite(STDOUT, 'Please enter a contact name to Delete' . PHP_EOL);
+	$deleteName = trim(fgets(STDIN));
 
 
+	$contactsArray = getAllContacts('contacts.txt');
 
-//function deleteContact(){
-// 	if ($input ==4){
-//		echo "You have deleted $contact" . PHP_EOL;		
-// 	}
-// }
+	foreach($contactsArray as $key => $contact){ 
+		if (strpos($contact, $deleteName)!==false){
+			unset($contactsArray[$key]);
+		}
+	}
 
+
+	$stringToWrite = implode("\n", $contactsArray);
+	$filename = 'contacts.txt';
+	$handle = fopen($filename, 'w');
+	fwrite($handle, PHP_EOL . $stringToWrite);
+	fclose($handle);
+	
+	print_r("$deleteName has been removed from contact list" . PHP_EOL);
+}
 
 
 
