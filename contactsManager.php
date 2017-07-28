@@ -21,14 +21,10 @@ function viewContacts($contacts){
 	foreach($contactList as $contact){
 		print_r($contact['name'] . '    |     ' .$contact['number'] .PHP_EOL );
 	}
-	
 }
 
 //basic beginning template
-
 //user inputs a number
-
-
 // //makes the entire menu work
 function menu(){
 
@@ -59,18 +55,14 @@ function menu(){
 			echo "Please choose a valid menu option" . PHP_EOL;
 		}
 
-var_dump($input);
-// fclose($handle);
 }
 menu();
 
-
-function addContact(){
-
+function addContact()
+{
 	fwrite(STDOUT, 'Please enter new name' . PHP_EOL);
 	$name = trim(fgets(STDIN));
 	
-
 	fwrite(STDOUT, 'Please enter new phone number' . PHP_EOL);
 	$number = trim(fgets(STDIN));
 
@@ -80,34 +72,25 @@ function addContact(){
 	fclose($handle);
 }
 
-
-function searchContacts(){
-	//Taking from user the Search name
-	fwrite(STDOUT, 'Please enter a contact name to View' . PHP_EOL);
+function searchContacts()
+{
+	fwrite(STDOUT, 'Please enter a contact name to View' . PHP_EOL); //Taking from user the Search name
 	$searchName = trim(fgets(STDIN));
 	$contacts = [];
-	
 	$contactsArray = getAllContacts('contacts.txt');
 	
 	foreach($contactsArray as $contact){
 		if (strpos($contact, $searchName)!==false){
 			array_push($contacts, $contact);
 		}
-
 	}
 	viewContacts($contacts);
-
 }
 
-
 function deleteContact(){
-	
 	//foreach -- do we need a foreach to remove the specific index by name from the array? 
-	
 	fwrite(STDOUT, 'Please enter a contact name to Delete' . PHP_EOL);
 	$deleteName = trim(fgets(STDIN));
-
-
 	$contactsArray = getAllContacts('contacts.txt');
 
 	foreach($contactsArray as $key => $contact){ 
@@ -115,7 +98,6 @@ function deleteContact(){
 			unset($contactsArray[$key]);
 		}
 	}
-
 
 	$stringToWrite = implode("\n", $contactsArray);
 	$filename = 'contacts.txt';
@@ -125,9 +107,3 @@ function deleteContact(){
 	
 	print_r("$deleteName has been removed from contact list" . PHP_EOL);
 }
-
-
-
-
-
-
