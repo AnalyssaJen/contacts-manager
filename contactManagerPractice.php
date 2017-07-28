@@ -78,24 +78,25 @@ function addContact(){
 	fwrite(STDOUT, 'Please enter new phone number' . PHP_EOL);
 	$number = trim(fgets(STDIN));
 
-	// $newContact['name'] = $name;
-	// $newContact['number'] = $number;
-	
-	// array_push($contacts,$newContact);
+	$newContact['name'] = $name;
+	$newContact['number'] = $number;
 
-	$filename = 'contacts.txt';
-	$handle = fopen($filename, 'a');
-	fwrite($handle, $name . "|" . $number);
-	fclose($handle);
+	array_push($contacts,$newContact); *problem with global scope
 
+		// $filename = contacts.txt; *problems
+		// $handle = fopen($filename, 'a');
+		// fwrite($handle, $contacts);
+		// fclose($handle);
+
+var_dump($newContact);
+var_dump($contacts);
 }
-
 
 function searchContacts(){
 	fwrite(STDOUT, 'Please enter a contact name to View' . PHP_EOL);
 	$searchName = trim(fgets(STDIN));
-	$nameFound = (array_search('searchName', $contractString));
- 	print_r(array_search('searchName', $contactString));
+	$nameFound = (array_search('searchName', $contacts));
+ 	print_r(array_search('searchName', $contacts));
 	
 }
 //function deleteContact(){
@@ -108,10 +109,3 @@ function searchContacts(){
 // 		exit;
 // 	}
 // }
-
-
-
-
-
-
-
